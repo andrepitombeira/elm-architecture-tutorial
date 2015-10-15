@@ -40,7 +40,10 @@ getRandomGif topic =
 
 randomUrl: String -> String
 randomUrl topic =
-  Http.url
+  Http.url "http://api.giphy.com/v1/gifs/random"
+    [ "api_key" => "dc6zaTOxFJmzC"
+    , "tag" => topic
+    ]
 
 decodeImageUrl : Json.Decoder String
 decodeImageUrl = Json.at ["data", "image_url"] Json.string
